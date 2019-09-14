@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class CustomerView {
+public class CustomerAccountsView {
 
     private int AZN;
     private int USD;

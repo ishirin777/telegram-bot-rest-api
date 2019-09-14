@@ -4,7 +4,6 @@ import com.pashabank.demotelegrambot.domain.*;
 import com.pashabank.demotelegrambot.services.CustomerAccountsService;
 import com.pashabank.demotelegrambot.services.CustomerChatIdService;
 import com.pashabank.demotelegrambot.services.CustomerCreditsService;
-import com.pashabank.demotelegrambot.services.CustomerNameService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,18 +14,16 @@ public class BotController {
 
     private CustomerAccountsService customerAccountsService;
     private CustomerCreditsService customerCreditsService;
-    private CustomerNameService customerNameService;
     private CustomerChatIdService customerChatIdService;
 
-    public BotController(CustomerAccountsService customerAccountsService, CustomerCreditsService customerCreditsService, CustomerNameService customerNameService, CustomerChatIdService customerChatIdService) {
+    public BotController(CustomerAccountsService customerAccountsService, CustomerCreditsService customerCreditsService, CustomerChatIdService customerChatIdService) {
         this.customerAccountsService = customerAccountsService;
         this.customerCreditsService = customerCreditsService;
-        this.customerNameService = customerNameService;
         this.customerChatIdService = customerChatIdService;
     }
 
     @GetMapping("/customerAccounts/{customerPhoneNumber}")
-    public List<CustomerView> findCustomerAccountsByCustomerPhoneNumber(@PathVariable String customerPhoneNumber) throws Exception {
+    public List<CustomerAccountsView> findCustomerAccountsByCustomerPhoneNumber(@PathVariable String customerPhoneNumber) throws Exception {
         return customerAccountsService.findCustomerAccountsByCustomerPhoneNumber(customerPhoneNumber);
     }
 
@@ -37,7 +34,7 @@ public class BotController {
 
     @GetMapping("/customerNameAndSurname/{customerPhoneNumber}")
     public List<CustomerNameAndSurnameView> findCustomerNameAndSurnameByCustomerPhoneNumber(@PathVariable String customerPhoneNumber) throws Exception {
-        return customerNameService.findCustomerNameAndSurnameByCustomerPhoneNumber(customerPhoneNumber);
+        return customerAccountsService.findCustomerNameAndSurnameByCustomerPhoneNumber(customerPhoneNumber);
 
     }
 
