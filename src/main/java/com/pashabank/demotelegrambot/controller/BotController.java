@@ -35,13 +35,11 @@ public class BotController {
     @GetMapping("/customerNameAndSurname/{customerPhoneNumber}")
     public List<CustomerNameAndSurnameView> findCustomerNameAndSurnameByCustomerPhoneNumber(@PathVariable String customerPhoneNumber) throws Exception {
         return customerAccountsService.findCustomerNameAndSurnameByCustomerPhoneNumber(customerPhoneNumber);
-
     }
 
     @GetMapping("/customer/{customerChatId}")
     public CustomerChatIdView getCustomerByCustomerChatId(@PathVariable Long customerChatId) {
         return customerChatIdService.getCustomerByCustomerChatId(customerChatId);
-
     }
 
     @PostMapping
