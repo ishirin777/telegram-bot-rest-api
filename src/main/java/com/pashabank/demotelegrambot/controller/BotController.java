@@ -40,6 +40,7 @@ public class BotController {
     @GetMapping("/customer/{customerChatId}")
     public CustomerChatIdView getCustomerByCustomerChatId(@PathVariable Long customerChatId) {
         return customerChatIdService.getCustomerByCustomerChatId(customerChatId);
+
     }
 
     @PostMapping
