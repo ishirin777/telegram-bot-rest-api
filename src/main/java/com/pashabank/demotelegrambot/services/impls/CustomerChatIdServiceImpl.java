@@ -25,7 +25,7 @@ public class CustomerChatIdServiceImpl implements CustomerChatIdService {
     }
 
     @Override
-    public CustomerChatIdView getCustomerByCustomerChatId(Long customerChatId){
+    public CustomerChatIdView getCustomerByCustomerChatId(Long customerChatId) {
         Optional<CustomerChatIdEntity> customer = customerChatIdRepository.getCustomerByCustomerChatId(customerChatId);
         if (customer.isPresent()) {
             return customer

@@ -19,7 +19,7 @@ public class CustomerCreditsServiceImpl implements CustomerCreditsService {
         this.customerCreditsRepository = customerCreditsRepository;
     }
 
-    public List<CustomerCreditsView> findCustomerCreditsAmountByCustomerPhoneNumber(String customerPhoneNumber) throws Exception {
+    public List<CustomerCreditsView> findCustomerCreditsAmountByCustomerPhoneNumber(String customerPhoneNumber){
         Optional<CustomerCreditsEntity> creditsAmount = customerCreditsRepository.findCustomerCreditsAmountByCustomerPhoneNumber(customerPhoneNumber);
         if (creditsAmount.isPresent()) {
             return creditsAmount
@@ -28,7 +28,7 @@ public class CustomerCreditsServiceImpl implements CustomerCreditsService {
                             customerCreditsEntity.getTotalCreditsAmountInUSD()))
                     .collect(Collectors.toList());
         } else {
-            throw new Exception("Record not found");
+            return null;
         }
     }
 }

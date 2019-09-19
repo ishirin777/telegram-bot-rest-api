@@ -23,17 +23,17 @@ public class BotController {
     }
 
     @GetMapping("/customerAccounts/{customerPhoneNumber}")
-    public List<CustomerAccountsView> findCustomerAccountsByCustomerPhoneNumber(@PathVariable String customerPhoneNumber) throws Exception {
+    public List<CustomerAccountsView> findCustomerAccountsByCustomerPhoneNumber(@PathVariable String customerPhoneNumber) {
         return customerAccountsService.findCustomerAccountsByCustomerPhoneNumber(customerPhoneNumber);
     }
 
     @GetMapping("/customerCreditsAmount/{customerPhoneNumber}")
-    public List<CustomerCreditsView> findCustomerCreditsAmountByCustomerPhoneNumber(@PathVariable String customerPhoneNumber) throws Exception {
+    public List<CustomerCreditsView> findCustomerCreditsAmountByCustomerPhoneNumber(@PathVariable String customerPhoneNumber) {
         return customerCreditsService.findCustomerCreditsAmountByCustomerPhoneNumber(customerPhoneNumber);
     }
 
     @GetMapping("/customerNameAndSurname/{customerPhoneNumber}")
-    public List<CustomerNameAndSurnameView> findCustomerNameAndSurnameByCustomerPhoneNumber(@PathVariable String customerPhoneNumber) throws Exception {
+    public List<CustomerNameAndSurnameView> findCustomerNameAndSurnameByCustomerPhoneNumber(@PathVariable String customerPhoneNumber) {
         return customerAccountsService.findCustomerNameAndSurnameByCustomerPhoneNumber(customerPhoneNumber);
     }
 

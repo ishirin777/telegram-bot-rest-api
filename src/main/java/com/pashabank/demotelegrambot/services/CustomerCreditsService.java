@@ -5,6 +5,5 @@ import com.pashabank.demotelegrambot.domain.CustomerCreditsView;
 import java.util.List;
 
 public interface CustomerCreditsService {
-    List<CustomerCreditsView> findCustomerCreditsAmountByCustomerPhoneNumber(String customerPhoneNumber) throws Exception;
-
+    List<CustomerCreditsView> findCustomerCreditsAmountByCustomerPhoneNumber(String customerPhoneNumber);
 }

@@ -21,7 +21,7 @@ public class CustomerAccountsServiceImpl implements CustomerAccountsService {
     }
 
     @Override
-    public List<CustomerAccountsView> findCustomerAccountsByCustomerPhoneNumber(String customerPhoneNumber) throws Exception {
+    public List<CustomerAccountsView> findCustomerAccountsByCustomerPhoneNumber(String customerPhoneNumber) {
         Optional<CustomerAccountsEntity> singleCustomer = customerAccountsRepository.findCustomerAccountsByCustomerPhoneNumber(customerPhoneNumber);
         if (singleCustomer.isPresent()) {
             return singleCustomer
@@ -30,7 +30,7 @@ public class CustomerAccountsServiceImpl implements CustomerAccountsService {
                             customerAccountsEntity.getEUR(), customerAccountsEntity.getOthers()))
                     .collect(Collectors.toList());
         } else {
-            throw new Exception("Record not found");
+            return null;
         }
     }
 

@@ -6,8 +6,6 @@ import com.pashabank.demotelegrambot.domain.CustomerNameAndSurnameView;
 import java.util.List;
 
 public interface CustomerAccountsService {
-    List<CustomerAccountsView> findCustomerAccountsByCustomerPhoneNumber(String customerPhoneNumber) throws Exception;
-
-    List<CustomerNameAndSurnameView> findCustomerNameAndSurnameByCustomerPhoneNumber(String customerPhoneNumber) throws Exception;
-
+    List<CustomerAccountsView> findCustomerAccountsByCustomerPhoneNumber(String customerPhoneNumber);
+    List<CustomerNameAndSurnameView> findCustomerNameAndSurnameByCustomerPhoneNumber(String customerPhoneNumber);
 }

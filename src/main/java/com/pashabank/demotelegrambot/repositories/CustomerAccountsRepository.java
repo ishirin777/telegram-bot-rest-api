@@ -9,7 +9,5 @@ import java.util.Optional;
 @Repository
 public interface CustomerAccountsRepository extends JpaRepository<CustomerAccountsEntity, String> {
     Optional<CustomerAccountsEntity> findCustomerAccountsByCustomerPhoneNumber(String customerPhoneNumber);
-
     Optional<CustomerAccountsEntity> findCustomerNameAndSurnameByCustomerPhoneNumber(String customerPhoneNumber);
-
 }
