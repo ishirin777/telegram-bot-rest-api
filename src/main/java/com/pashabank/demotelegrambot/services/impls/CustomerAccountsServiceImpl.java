@@ -27,7 +27,7 @@ public class CustomerAccountsServiceImpl implements CustomerAccountsService {
             return singleCustomer
                     .stream()
                     .map(customerAccountsEntity -> new CustomerAccountsView(customerAccountsEntity.getAZN(), customerAccountsEntity.getUSD(),
-                            customerAccountsEntity.getEUR(), customerAccountsEntity.getOthers()))
+                            customerAccountsEntity.getEUR()))
                     .collect(Collectors.toList());
         } else {
             return null;
@@ -35,14 +35,14 @@ public class CustomerAccountsServiceImpl implements CustomerAccountsService {
     }
 
     @Override
-    public List<CustomerNameAndSurnameView> findCustomerNameAndSurnameByCustomerPhoneNumber(String customerPhoneNumber) {
+    public CustomerNameAndSurnameView findCustomerNameAndSurnameByCustomerPhoneNumber(String customerPhoneNumber) {
         Optional<CustomerAccountsEntity> customer = customerAccountsRepository
                 .findCustomerNameAndSurnameByCustomerPhoneNumber(customerPhoneNumber);
         if (customer.isPresent()) {
             return customer
                     .stream()
                     .map(customerAccountsEntity -> new CustomerNameAndSurnameView(customerAccountsEntity.getCustomerName(), customerAccountsEntity.getCustomerSurname()))
-                    .collect(Collectors.toList());
+                    .collect(Collectors.toList()).get(0);
         } else {
             return null;
         }

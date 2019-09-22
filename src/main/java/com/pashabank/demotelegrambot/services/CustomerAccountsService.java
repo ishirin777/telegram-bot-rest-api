@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface CustomerAccountsService {
     List<CustomerAccountsView> findCustomerAccountsByCustomerPhoneNumber(String customerPhoneNumber);
-    List<CustomerNameAndSurnameView> findCustomerNameAndSurnameByCustomerPhoneNumber(String customerPhoneNumber);
+    CustomerNameAndSurnameView findCustomerNameAndSurnameByCustomerPhoneNumber(String customerPhoneNumber);
 }

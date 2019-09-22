@@ -10,5 +10,4 @@ public class CustomerAccountsView {
     private int AZN;
     private int USD;
     private int EUR;
-    private int others;
 }

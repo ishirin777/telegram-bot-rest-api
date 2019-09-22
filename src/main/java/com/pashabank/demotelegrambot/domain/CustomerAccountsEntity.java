@@ -38,7 +38,4 @@ public class CustomerAccountsEntity {
 
     @Column(name = "EUR")
     private int EUR;
-
-    @Column(name = "others")
-    private int others;
 }

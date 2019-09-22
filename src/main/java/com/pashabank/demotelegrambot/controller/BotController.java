@@ -1,10 +1,14 @@
 package com.pashabank.demotelegrambot.controller;
 
-import com.pashabank.demotelegrambot.domain.*;
+import com.pashabank.demotelegrambot.domain.CustomerAccountsView;
+import com.pashabank.demotelegrambot.domain.CustomerCreditsView;
+import com.pashabank.demotelegrambot.domain.CustomerNameAndSurnameView;
 import com.pashabank.demotelegrambot.services.CustomerAccountsService;
-import com.pashabank.demotelegrambot.services.CustomerChatIdService;
 import com.pashabank.demotelegrambot.services.CustomerCreditsService;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -14,12 +18,10 @@ public class BotController {
 
     private CustomerAccountsService customerAccountsService;
     private CustomerCreditsService customerCreditsService;
-    private CustomerChatIdService customerChatIdService;
 
-    public BotController(CustomerAccountsService customerAccountsService, CustomerCreditsService customerCreditsService, CustomerChatIdService customerChatIdService) {
+    public BotController(CustomerAccountsService customerAccountsService, CustomerCreditsService customerCreditsService) {
         this.customerAccountsService = customerAccountsService;
         this.customerCreditsService = customerCreditsService;
-        this.customerChatIdService = customerChatIdService;
     }
 
     @GetMapping("/customerAccounts/{customerPhoneNumber}")
@@ -33,17 +35,7 @@ public class BotController {
     }
 
     @GetMapping("/customerNameAndSurname/{customerPhoneNumber}")
-    public List<CustomerNameAndSurnameView> findCustomerNameAndSurnameByCustomerPhoneNumber(@PathVariable String customerPhoneNumber) {
+    public CustomerNameAndSurnameView findCustomerNameAndSurnameByCustomerPhoneNumber(@PathVariable String customerPhoneNumber) {
         return customerAccountsService.findCustomerNameAndSurnameByCustomerPhoneNumber(customerPhoneNumber);
-    }
-
-    @GetMapping("/customer/{customerChatId}")
-    public CustomerChatIdView getCustomerByCustomerChatId(@PathVariable Long customerChatId) {
-        return customerChatIdService.getCustomerByCustomerChatId(customerChatId);
-    }
-
-    @PostMapping
-    public CustomerChatIdEntity createCustomerChatIdAndPhoneNumber(@ModelAttribute CustomerChatIdEntity customerChatIdEntityAndPhoneNumber) {
-        return customerChatIdService.createCustomerChatIdAndPhoneNumber(customerChatIdEntityAndPhoneNumber);
     }
 }
