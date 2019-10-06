@@ -24,17 +24,17 @@ public class BotController {
         this.customerCreditsService = customerCreditsService;
     }
 
-    @GetMapping("/customerAccounts/{customerPhoneNumber}")
+    @GetMapping("/v1/customerAccounts/{customerPhoneNumber}")
     public List<CustomerAccountsView> findCustomerAccountsByCustomerPhoneNumber(@PathVariable String customerPhoneNumber) {
         return customerAccountsService.findCustomerAccountsByCustomerPhoneNumber(customerPhoneNumber);
     }
 
-    @GetMapping("/customerCreditsAmount/{customerPhoneNumber}")
+    @GetMapping("/v1/customerCreditsAmount/{customerPhoneNumber}")
     public List<CustomerCreditsView> findCustomerCreditsAmountByCustomerPhoneNumber(@PathVariable String customerPhoneNumber) {
         return customerCreditsService.findCustomerCreditsAmountByCustomerPhoneNumber(customerPhoneNumber);
     }
 
-    @GetMapping("/customerNameAndSurname/{customerPhoneNumber}")
+    @GetMapping("/v1/customerNameAndSurname/{customerPhoneNumber}")
     public CustomerNameAndSurnameView findCustomerNameAndSurnameByCustomerPhoneNumber(@PathVariable String customerPhoneNumber) {
         return customerAccountsService.findCustomerNameAndSurnameByCustomerPhoneNumber(customerPhoneNumber);
     }
